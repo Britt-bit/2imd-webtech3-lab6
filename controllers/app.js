@@ -16,5 +16,22 @@ const getAll = (req, res, next) => {
     });
 }
 
+const update = (req, res) => {
+    let country = req.params.country;
+    let amount = req.body.amount;
+    console.log(country);
+    console.log(amount);
+
+    if(updateItem === "Belgium"){
+        newSchema.findOneAndUpdate({}, {"Belgium": amount}, (err, docs) => {
+            if(!err){
+                res.json({
+                    "status": "succes", 
+                    "countries": docs
+                })
+            }
+        })
+    }
+}
 module.exports.getAll = getAll;
 module.exports.update = update;
