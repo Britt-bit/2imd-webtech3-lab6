@@ -31,7 +31,7 @@ const update = (req, res) => {
                 })
             }
         })
-    }
+    } 
 }
 module.exports.getAll = getAll;
 module.exports.update = update;
