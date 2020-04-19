@@ -5,7 +5,7 @@ const getAll = (req, res, next) => {
         if(!err){
             res.json({
                 "status": "succes",
-                "message": docs
+                "country": docs
             });
         }if(err){
             res.json({
@@ -15,4 +15,6 @@ const getAll = (req, res, next) => {
         }
     });
 }
+
 module.exports.getAll = getAll;
+module.exports.update = update;

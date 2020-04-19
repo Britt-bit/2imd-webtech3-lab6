@@ -3,11 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var router = require('./routes/app');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+
+const mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost:27017/app", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.set('useFindAndModify', false);
+
 
 var app = express();
 
@@ -15,6 +22,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
